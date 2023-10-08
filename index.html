@@ -5,6 +5,14 @@
     <title>To Do</title>
 </head>
 <body>
+    <div class="addProjectModal">
+        <div class="formSsction">
+            <form id="form" action="">
+                <input type="text" name="Pname" id="Pname" placeholder="Enter project name" >
+                <input id="Psubmit" type="submit" value="Add project">
+            </form>
+        </div>
+    </div>
     <div class="header">
         <img class="menuBtn" src="images/menu-custom.png" alt="">
         <h1 class="title">To Do</h1>
@@ -22,10 +30,18 @@
             <p class="titleP"> <img src="images/package-variant-closed-custom.png" alt=""> Projests</p>
             <p class="addP"> <img src="images/plus-custom.png" alt=""> Add</p>
             <ul class="projectsList"></ul>
-
         </div>
     </div>
-    <div class="content"> </div>
+    <div class="content"> 
+        <div class="tasksClt ">
+            <button  class=" tasksCltBtn addTaskBtn">Add Task</button>
+            <button class=" tasksCltBtn deletProjectBtn">Delete Project</button>
+        </div>
+        <div class="taskSection"></div>
+        <div class="taskSection"></div>
+        <div class="taskSection"></div>
+        <div class="taskSection"></div>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>

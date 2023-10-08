@@ -7,8 +7,13 @@ import { ProjectCTL, showAllPriject } from "./data.js"
 const menuBtn = document.querySelector(".menuBtn");
 const sideBar = document.querySelector(".sidebar");
 const projectsList = document.querySelector(".projectsLIst");
+const addProject=document.querySelector(".addP")
+const addProjectModal=document.querySelector(".addProjectModal")
+const addProjectForm=document.querySelector("#form")
 
-function liveEventListener() {
+
+
+function responsivePage() {
   let active = false;
   menuBtn.addEventListener("click", () => {
     // console.log(document.body.offsetWidth);
@@ -22,7 +27,26 @@ function liveEventListener() {
   });
 
 }
-liveEventListener();
+// responsivePage();
+
+addProject.addEventListener('click',()=>{
+  addProjectModal.classList.add("Active")
+  sideBar.classList.remove("Active");
+
+})
+
+addProjectForm.onsubmit = (e) => {
+  e.preventDefault()
+  const Pname = document.getElementById('Pname').value
+  console.log(Pname);
+  addProjectModal.classList.remove("Active")
+  form.reset()
+  ProjectCTL.createProject(Pname)
+  addProjectsToUiList()
+  
+}
+
+
 
 function addProjectsToUiList(){
   projectsList.innerHTML=""
@@ -42,9 +66,9 @@ function addProjectsToUiList(){
 addProjectsToUiList()
 
 
-ProjectCTL.removeProject("test");
+
 addProjectsToUiList()
 
 
 
-export default liveEventListener;
+export default responsivePage;

@@ -1,6 +1,6 @@
 import "./style.css";
-import liveEventListener from "./UI.js";
+import responsivePage from "./UI.js";
 
 
-liveEventListener()
+responsivePage()
 

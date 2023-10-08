@@ -95,6 +95,77 @@ ul {
 .content {
   background-color: #64748b;
   grid-column: 2/3;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+  padding-top: 50px;
+}
+.tasksClt{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 100px;
+}
+.tasksCltBtn{
+  width: 150px;
+  height: 50px;
+  background-color: #334155;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+}
+.taskSection{
+  width: 75%;
+  height: 50px;
+  background-color: #334155;
+  border-radius: 10px;
+}
+.addProjectModal {
+  font: 18px;
+  display: none;
+  position: fixed;
+  background-color: #0f172a85;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.formSsction {
+  width: 300px;
+  height: 200px;
+  background-color: #0f172a ;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+#Pname {
+  color: #64748b;
+  font-size: 18px;
+  background-color: #0f172a;
+  border-radius: 10px;
+  height: 40px;
+  width: 200px;
+  border: none;
+  border: #64748b solid 2px;
+}
+#Psubmit {
+  background-color: #0f172a;
+  border-radius: 20px;
+  height: 40px;
+  width: 100px;
+  color: #64748b;
+  border: #64748b solid 2px;
 }
 
 @media only screen and (max-width: 800px) {

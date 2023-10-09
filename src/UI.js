@@ -8,9 +8,9 @@ const addProject = document.querySelector(".addP");
 const addProjectModal = document.querySelector(".addProjectModal");
 const addProjectForm = document.querySelector("#form");
 const content = document.querySelector(".content");
-
+let active = false;
 function responsivePage() {
-  let active = false;
+  
   menuBtn.addEventListener("click", () => {
     // console.log(document.body.offsetWidth);
     if (active) {
@@ -27,6 +27,7 @@ function responsivePage() {
 addProject.addEventListener("click", () => {
   addProjectModal.classList.add("Active");
   sideBar.classList.remove("Active");
+  active = !active;
 });
 
 // function renderTasks(listOfTasks) {

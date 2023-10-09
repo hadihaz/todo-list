@@ -1,14 +1,16 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do</title>
 </head>
+
 <body>
     <div class="addProjectModal">
         <div class="formSsction">
             <form id="form" action="">
-                <input type="text" name="Pname" id="Pname" placeholder="Enter project name" >
+                <input type="text" name="Pname" id="Pname" placeholder=" Enter project name" required>
                 <input id="Psubmit" type="submit" value="Add project">
             </form>
         </div>
@@ -20,21 +22,26 @@
     <div class="sidebar">
         <div class="sideBarMain">
             <ul>
-                <li><img class="sideBarMainImg" src="images/check-decagram-custom.png" alt=""> Tasks</li>
+                <!-- <li><img class="sideBarMainImg" src="images/check-decagram-custom.png" alt=""> Tasks</li> -->
                 <!-- <li><img class="sideBarMainImg" src="images/white-balance-sunny-custom.png" alt=""> Day</li> -->
                 <!-- <li><img class="sideBarMainImg"  src="images/calendar-week-begin-custom.png" alt=""> Week</li> -->
-                <li><img class="sideBarMainImg" src="images/notebook-custom.png" alt=""> Notes</li>
+                <!-- <li><img class="sideBarMainImg" src="images/notebook-custom.png" alt=""> Notes</li> -->
+
+                <li> <button class="sideBarMainBtn"><img class="sideBarMainImg" src="images/check-decagram-custom.png"
+                            alt="">Tasks</button></li>
+                <li> <button class="sideBarMainBtn"> <img class="sideBarMainImg" src="images/notebook-custom.png"
+                            alt="">Notes</button></li>
             </ul>
         </div>
         <div class="projects">
             <p class="titleP"> <img src="images/package-variant-closed-custom.png" alt=""> Projests</p>
-            <p class="addP"> <img src="images/plus-custom.png" alt=""> Add</p>
+            <button class="addP"><img src="images/plus-custom.png" alt=""> Add</button>
             <ul class="projectsList"></ul>
         </div>
     </div>
-    <div class="content"> 
+    <div class="content">
         <div class="tasksClt ">
-            <button  class=" tasksCltBtn addTaskBtn">Add Task</button>
+            <button class=" tasksCltBtn addTaskBtn">Add Task</button>
             <button class=" tasksCltBtn deletProjectBtn">Delete Project</button>
         </div>
         <div class="taskSection"></div>
@@ -44,4 +51,5 @@
     </div>
     <script src="main.js"></script>
 </body>
+
 </html>

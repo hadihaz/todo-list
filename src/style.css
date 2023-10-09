@@ -50,43 +50,76 @@ ul {
   justify-content: start;
   gap: 5px;
   border-radius: 5px;
-  padding: 0px 20px 0px 30px;
 }
-.sideBarMain ul li:hover {
+
+.sideBarMainBtn {
+  background-color: #334155;
+  color: white;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-left: 30px;
+  font-size: 22px;
+  width: 100%;
+  margin: 0;
+  height: 50px;
+  border: none;
+  gap: 5px;
+}
+
+.sideBarMainBtn:hover {
   background-color: #0f172a5b;
 }
 
 .projects {
   border-top: solid 2px #64748b;
 }
-.projects ul li {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  gap: 5px;
-  border-radius: 5px;
-  padding: 0px 20px 0px 30px;
-}
+
 
 .projects ul li p {
   margin: 0;
   padding: 0;
 }
 
-.projects ul li:hover {
-  background-color: #0f172a5b;
-}
+
 .projects p {
   margin-bottom: 0;
   padding: 0px 20px 0px 30px;
 }
+.projectItem {
+  background-color: #334155;
+  color: white;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-left: 30px;
+  font-size: 22px;
+  width: 100%;
+  margin: 0;
+  height: 40px;
+  border: none;
+  gap: 5px;
+}
+.projectItem:hover {
+  background-color: #0f172a5b;
+}
 .titleP {
   font-size: 26px;
+  height: 50px;
 }
 
 .addP {
-  font-size: 20px;
-  margin-top: 0;
+  background-color: #334155;
+  color: white;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-left: 30px;
+  font-size: 24px;
+  width: 100%;
+  margin: 0;
+  height: 50px;
+  border: none;
 }
 .addP:hover {
   background-color: #0f172a5b;
@@ -102,22 +135,22 @@ ul {
   gap: 20px;
   padding-top: 50px;
 }
-.tasksClt{
+.tasksClt {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 100px;
 }
-.tasksCltBtn{
+.tasksCltBtn {
   width: 150px;
   height: 50px;
-  background-color: #334155;
+  background-color: #ffffff;
   border: none;
   border-radius: 10px;
-  color: white;
+  color: rgb(255, 0, 0);
   font-size: 20px;
+  margin: 0 20px;
 }
-.taskSection{
+.taskSection {
   width: 75%;
   height: 50px;
   background-color: #334155;
@@ -136,7 +169,7 @@ ul {
 .formSsction {
   width: 300px;
   height: 200px;
-  background-color: #0f172a ;
+  background-color: #0f172a;
   border-radius: 20px;
   display: flex;
   justify-content: center;
@@ -186,6 +219,10 @@ ul {
   }
   .content {
     grid-column: 1/3;
+  }
+
+  .tasksCltBtn {
+    width: 140px;
   }
 }
 .Active {

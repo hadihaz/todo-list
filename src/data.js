@@ -1,6 +1,14 @@
+function createPersonalProject() {
+  addTask("personal","task1")
+  addTask("personal","task2")
+  addTask("personal","task3")
+  addNote("personal","note1","hello world")
+}
 let listOfProjects = JSON.parse(localStorage.getItem("__lIST_OF_PROJECTS__"));
-if (listOfProjects == null)
-  localStorage.setItem("__lIST_OF_PROJECTS__", JSON.stringify([]));
+if (listOfProjects == null) {
+  localStorage.setItem("__lIST_OF_PROJECTS__", JSON.stringify(["personal"]));
+  createPersonalProject();
+}
 
 class project {
   constructor(name) {

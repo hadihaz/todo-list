@@ -1,15 +1,3 @@
-function createPersonalProject() {
-  addTask("personal","task1")
-  addTask("personal","task2")
-  addTask("personal","task3")
-  addNote("personal","note1","hello world")
-}
-let listOfProjects = JSON.parse(localStorage.getItem("__lIST_OF_PROJECTS__"));
-if (listOfProjects == null) {
-  localStorage.setItem("__lIST_OF_PROJECTS__", JSON.stringify(["personal"]));
-  createPersonalProject();
-}
-
 class project {
   constructor(name) {
     this.name = name;
@@ -35,6 +23,7 @@ class note {
 
 const ProjectCTL = (() => {
   const createProject = (name) => {
+  
     if (!listOfProjects.includes(name)) {
       let newProject = new project(name);
       localStorage.setItem(name, JSON.stringify(newProject));
@@ -104,6 +93,10 @@ const ProjectCTL = (() => {
     });
     localStorage.setItem(projectName, JSON.stringify(selectedProject));
   };
+  const showProject = (Pname) => {
+    let PList = JSON.parse(localStorage.getItem(Pname));
+    return PList;
+  };
 
   return {
     createProject,
@@ -115,8 +108,14 @@ const ProjectCTL = (() => {
     editNoteName,
     editNoteContent,
     removeProject,
+    showProject,
   };
 })();
+
+let listOfProjects = JSON.parse(localStorage.getItem("__lIST_OF_PROJECTS__"));
+if (listOfProjects.length == 0) {
+  localStorage.setItem("__lIST_OF_PROJECTS__", JSON.stringify([]));
+}
 
 function showListOfPriject(listOfProjects) {
   return listOfProjects;

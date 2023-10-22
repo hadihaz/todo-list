@@ -6,13 +6,46 @@ const sideBar = document.querySelector(".sidebar");
 const projectsList = document.querySelector(".projectsLIst");
 const addProject = document.querySelector(".addP");
 const addProjectModal = document.querySelector(".addProjectModal");
+const addTaskModal = document.querySelector(".addTaskModal");
+const addNoteModal = document.querySelector(".addNoteModal");
 const addProjectForm = document.querySelector("#form");
+const addTaskForm = document.querySelector("#Taskform");
+const addNoteForm = document.querySelector("#Noteform");
 const content = document.querySelector(".content");
+const addBtn = document.querySelector(".addTaskBtn");
+const taskList = document.querySelector(".taskList");
+const NoteList = document.querySelector(".NoteList");
+const Tbtn = document.querySelector(".Tbtn");
+const Nbtn = document.querySelector(".Nbtn");
+const close = document.querySelectorAll(".close");
+
 let active = false;
+let selectedProject = showAllPriject()[0];
+let addBtnState = "T";
+close.forEach((c) => {
+  c.addEventListener("click", () => {
+    addProjectModal.classList.remove("Active");
+    addTaskModal.classList.remove("Active");
+    addNoteModal.classList.remove("Active");
+  });
+});
+
+Tbtn.addEventListener("click", (e) => {
+  console.log(e.target.style);
+  taskList.style.display = "flex";
+  NoteList.style.display = "none";
+  addBtn.innerHTML = "Add Task";
+  addBtnState = "T";
+});
+Nbtn.addEventListener("click", () => {
+  taskList.style.display = "none";
+  NoteList.style.display = "flex";
+  addBtn.innerHTML = "Add Note";
+  addBtnState = "N";
+});
+
 function responsivePage() {
-  
   menuBtn.addEventListener("click", () => {
-    // console.log(document.body.offsetWidth);
     if (active) {
       sideBar.classList.remove("Active");
       active = !active;
@@ -22,7 +55,6 @@ function responsivePage() {
     }
   });
 }
-// responsivePage();
 
 addProject.addEventListener("click", () => {
   addProjectModal.classList.add("Active");
@@ -30,22 +62,13 @@ addProject.addEventListener("click", () => {
   active = !active;
 });
 
-// function renderTasks(listOfTasks) {
-
-//   let t = document.createElement(div);
-//   t.classList.add("taskSection")
-
-// }
-// renderTasks(listOfTasks)
-
 addProjectForm.onsubmit = (e) => {
   e.preventDefault();
   const Pname = document.getElementById("Pname").value;
-  console.log(Pname);
   addProjectModal.classList.remove("Active");
-  form.reset();
   ProjectCTL.createProject(Pname);
   addProjectsToUiList();
+  form.reset();
 };
 
 function addProjectsToUiList() {
@@ -58,17 +81,73 @@ function addProjectsToUiList() {
     img.src = "images/package-custom.png";
 
     p.innerHTML = project;
-    btn.classList.add("projectItem")
-    btn.id=project
+    btn.classList.add("projectItem");
+
+    btn.id = project;
     btn.appendChild(img);
     btn.appendChild(p);
     li.appendChild(btn);
-
+    btn.addEventListener("click", (e) => {
+      selectedProject = e.target.id;
+      sideBar.classList.remove("Active");
+      active = !active;
+      addTaskToUiList();
+      addNoteToUiList();
+    });
     projectsList.appendChild(li);
   }
 }
-addProjectsToUiList();
+
+addBtn.addEventListener("click", () => {
+  if (addBtnState == "T") {
+    addTaskModal.classList.add("Active");
+  } else if (addBtnState == "N") {
+    addNoteModal.classList.add("Active");
+  }
+});
+function addTaskToUiList() {
+  taskList.innerHTML = "";
+  console.log(localStorage);
+  console.log(ProjectCTL.showProject(selectedProject));
+  for (let t of ProjectCTL.showProject(selectedProject).tasks) {
+    const div = document.createElement("div");
+    div.classList.add("taskSection");
+    div.innerHTML = t.name;
+    taskList.appendChild(div);
+  }
+}
+addTaskForm.onsubmit = (e) => {
+  e.preventDefault();
+  const Tname = document.getElementById("Tname").value;
+  addTaskModal.classList.remove("Active");
+  ProjectCTL.addTask(selectedProject, Tname);
+  addTaskToUiList();
+  form.reset();
+};
+
+function addNoteToUiList() {
+  NoteList.innerHTML = "";
+  // console.log(localStorage);
+  console.log(ProjectCTL.showProject(selectedProject));
+  for (let n of ProjectCTL.showProject(selectedProject).notes) {
+    const div = document.createElement("div");
+    div.classList.add("taskSection");
+    div.innerHTML = n.name;
+    NoteList.appendChild(div);
+  }
+}
+addNoteForm.onsubmit = (e) => {
+  e.preventDefault();
+  const Nname = document.getElementById("Nname").value;
+  const notetextarea = document.getElementById("notetextarea").value;
+  addNoteModal.classList.remove("Active");
+  ProjectCTL.addNote(selectedProject, Nname, notetextarea);
+  addNoteToUiList();
+  form.reset();
+};
 
 addProjectsToUiList();
+addTaskToUiList();
+addNoteToUiList();
 
 export default responsivePage;

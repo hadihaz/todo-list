@@ -75,12 +75,10 @@ ul {
   border-top: solid 2px #64748b;
 }
 
-
 .projects ul li p {
   margin: 0;
   padding: 0;
 }
-
 
 .projects p {
   margin-bottom: 0;
@@ -143,22 +141,63 @@ ul {
 .tasksCltBtn {
   width: 150px;
   height: 50px;
-  background-color: #ffffff;
+  background-color: #334155;
   border: none;
   border-radius: 10px;
-  color: rgb(255, 0, 0);
-  font-size: 20px;
-  margin: 0 20px;
+  color: white;
+  font-size: 18px;
+  margin: 0 10px;
+}
+
+.taskList,
+.noteList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+}
+.taskList {
+  display: flex;
+}
+.noteList {
+  display: none;
 }
 .taskSection {
   width: 75%;
   height: 50px;
   background-color: #334155;
   border-radius: 10px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  font-size: 28px;
+  padding: 10px;
 }
 .addProjectModal {
   font: 18px;
   display: none;
+  position: fixed;
+  background-color: #0f172a85;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.close{
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 100px;
+  right:30 ;
+  top: 10;
+  position: fixed;
+}
+.addTaskModal,
+.addNoteModal {
+  font: 18px;
+  display: none;
+  /* display: flex; */
   position: fixed;
   background-color: #0f172a85;
   width: 100%;
@@ -175,14 +214,28 @@ ul {
   justify-content: center;
   align-items: center;
 }
-#form {
+.noteFormSsction {
+  height: 350px;
+}
+.notetextarea {
+  color: #64748b;
+  background-color: #0f172a;
+  border-radius: 10px;
+  width: 200px;
+  border: #64748b solid 2px;
+}
+#form,
+#Taskform,
+#Noteform {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 20px;
 }
-#Pname {
+#Pname,
+#Tname,
+#Nname {
   color: #64748b;
   font-size: 18px;
   background-color: #0f172a;
@@ -192,7 +245,9 @@ ul {
   border: none;
   border: #64748b solid 2px;
 }
-#Psubmit {
+#Psubmit,
+#Tsubmit,
+#Nsubmit {
   background-color: #0f172a;
   border-radius: 20px;
   height: 40px;

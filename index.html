@@ -14,6 +14,29 @@
                 <input id="Psubmit" type="submit" value="Add project">
             </form>
         </div>
+        <div class="close">×</div>
+
+    </div>
+    <div class="addTaskModal">
+        <div class="formSsction">
+            <form id="Taskform" action="">
+                <input type="text" name="Tname" id="Tname" placeholder=" Enter Task: " required>
+                <input id="Tsubmit" type="submit" value="Add project">
+            </form>
+        </div>
+        <div class="close">×</div>
+
+    </div>
+    <div class="addNoteModal">
+        <div class="formSsction noteFormSsction">
+            <form id="Noteform" action="">
+                <input type="text" name="Nname" id="Nname" placeholder=" Enter Npte Name: " required>
+                <textarea class="notetextarea" name="" id="notetextarea" cols="30" rows="10"></textarea>
+                <input id="Nsubmit" type="submit" value="Add project">
+            </form>
+        </div>
+        <div class="close">×</div>
+
     </div>
     <div class="header">
         <img class="menuBtn" src="images/menu-custom.png" alt="">
@@ -27,9 +50,9 @@
                 <!-- <li><img class="sideBarMainImg"  src="images/calendar-week-begin-custom.png" alt=""> Week</li> -->
                 <!-- <li><img class="sideBarMainImg" src="images/notebook-custom.png" alt=""> Notes</li> -->
 
-                <li> <button class="sideBarMainBtn"><img class="sideBarMainImg" src="images/check-decagram-custom.png"
-                            alt="">Tasks</button></li>
-                <li> <button class="sideBarMainBtn"> <img class="sideBarMainImg" src="images/notebook-custom.png"
+                <li> <button class="sideBarMainBtn Tbtn"><img class="sideBarMainImg "
+                            src="images/check-decagram-custom.png" alt="">Tasks</button></li>
+                <li> <button class="sideBarMainBtn Nbtn"> <img class="sideBarMainImg " src="images/notebook-custom.png"
                             alt="">Notes</button></li>
             </ul>
         </div>
@@ -44,10 +67,10 @@
             <button class=" tasksCltBtn addTaskBtn">Add Task</button>
             <button class=" tasksCltBtn deletProjectBtn">Delete Project</button>
         </div>
-        <div class="taskSection"></div>
-        <div class="taskSection"></div>
-        <div class="taskSection"></div>
-        <div class="taskSection"></div>
+        <div class="taskList">
+            <!-- <div class="taskSection"></div> -->
+        </div>
+        <div class="NoteList"></div>
     </div>
     <script src="main.js"></script>
 </body>

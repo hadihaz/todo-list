@@ -36,12 +36,16 @@ Tbtn.addEventListener("click", (e) => {
   NoteList.style.display = "none";
   addBtn.innerHTML = "Add Task";
   addBtnState = "T";
+  sideBar.classList.remove("Active");
+  active = !active;
 });
 Nbtn.addEventListener("click", () => {
   taskList.style.display = "none";
   NoteList.style.display = "flex";
   addBtn.innerHTML = "Add Note";
   addBtnState = "N";
+  sideBar.classList.remove("Active");
+  active = !active;
 });
 
 function responsivePage() {

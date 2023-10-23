@@ -18,10 +18,20 @@ const NoteList = document.querySelector(".NoteList");
 const Tbtn = document.querySelector(".Tbtn");
 const Nbtn = document.querySelector(".Nbtn");
 const close = document.querySelectorAll(".close");
+const deletProjectBtn = document.querySelector(".deletProjectBtn");
 
 let active = false;
 let selectedProject = showAllPriject()[0];
 let addBtnState = "T";
+
+deletProjectBtn.addEventListener("click", () => {
+  ProjectCTL.removeProject(selectedProject);
+  selectedProject = showAllPriject()[0];
+  addProjectsToUiList();
+  addTaskToUiList();
+  addNoteToUiList();
+});
+
 close.forEach((c) => {
   c.addEventListener("click", () => {
     addProjectModal.classList.remove("Active");
@@ -131,11 +141,9 @@ addTaskForm.onsubmit = (e) => {
 
 function addNoteToUiList() {
   NoteList.innerHTML = "";
-  // console.log(localStorage);
-  console.log(ProjectCTL.showProject(selectedProject));
   for (let n of ProjectCTL.showProject(selectedProject).notes) {
     const div = document.createElement("div");
-    div.classList.add("taskSection");
+    div.classList.add("noteSection");
     div.innerHTML = n.name;
     NoteList.appendChild(div);
   }

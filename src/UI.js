@@ -121,12 +121,44 @@ addBtn.addEventListener("click", () => {
 });
 function addTaskToUiList() {
   taskList.innerHTML = "";
-  console.log(localStorage);
-  console.log(ProjectCTL.showProject(selectedProject));
   for (let t of ProjectCTL.showProject(selectedProject).tasks) {
     const div = document.createElement("div");
+    const text = document.createElement("p");
+    const icons = document.createElement("div");
+    const completeDiv = document.createElement("img");
+    const delBtnImg = document.createElement("img");
+    delBtnImg.src = "images/trash-can-custom.png";
     div.classList.add("taskSection");
-    div.innerHTML = t.name;
+    icons.classList.add("Ticons");
+    text.innerHTML = t.name;
+    icons.appendChild(completeDiv);
+    icons.appendChild(delBtnImg);
+    div.appendChild(text);
+    div.appendChild(icons);
+    // completeDiv.id = ProjectCTL.showProject(selectedProject).name;
+    completeDiv.id = t.completed;
+    delBtnImg.id = t.name;
+    if (t.completed) {
+      completeDiv.src = "images/circle-slice-8-custom.png";
+    } else {
+      completeDiv.src = "images/circle-outline-custom.png";
+    }
+    completeDiv.addEventListener("click", (e) => {
+      ProjectCTL.editTaskCompleted(selectedProject, t.name);
+      if (e.target.id) {
+        e.target.id = "false";
+        e.target.src = "images/circle-outline-custom.png";
+      } else {
+        e.target.id = "true";
+        e.target.src = "images/circle-slice-8-custom.png";
+      }
+      addTaskToUiList();
+    });
+    delBtnImg.addEventListener("click", () => {
+      ProjectCTL.deleteTask(selectedProject, t.name);
+      addTaskToUiList();
+    });
+
     taskList.appendChild(div);
   }
 }
@@ -136,15 +168,38 @@ addTaskForm.onsubmit = (e) => {
   addTaskModal.classList.remove("Active");
   ProjectCTL.addTask(selectedProject, Tname);
   addTaskToUiList();
-  form.reset();
+  addTaskForm.reset();
 };
 
 function addNoteToUiList() {
   NoteList.innerHTML = "";
   for (let n of ProjectCTL.showProject(selectedProject).notes) {
     const div = document.createElement("div");
+    const head = document.createElement("div");
+
+    const name = document.createElement("div");
+    const content = document.createElement("div");
+
+    const delBtnImg = document.createElement("img");
+    delBtnImg.src = "images/trash-can-custom.png";
+    delBtnImg.id = n.name;
+    console.log(n.name);
+
     div.classList.add("noteSection");
-    div.innerHTML = n.name;
+    name.innerHTML = n.name;
+    content.classList.add("noteContent");
+    content.innerHTML = n.content;
+    head.classList.add("noteHead");
+    delBtnImg.addEventListener("click", (e) => {
+      ProjectCTL.deleteNote(selectedProject, n.name);
+      addNoteToUiList();
+    });
+
+    head.appendChild(name);
+    head.appendChild(delBtnImg);
+    div.appendChild(head);
+    div.appendChild(content);
+
     NoteList.appendChild(div);
   }
 }
@@ -155,7 +210,7 @@ addNoteForm.onsubmit = (e) => {
   addNoteModal.classList.remove("Active");
   ProjectCTL.addNote(selectedProject, Nname, notetextarea);
   addNoteToUiList();
-  form.reset();
+  addNoteForm.reset();
 };
 
 addProjectsToUiList();

@@ -9,6 +9,7 @@ class project {
 class task {
   constructor(name) {
     this.name = name;
+    this.completed = false;
     this.date = new Date();
   }
 }
@@ -23,7 +24,6 @@ class note {
 
 const ProjectCTL = (() => {
   const createProject = (name) => {
-  
     if (!listOfProjects.includes(name)) {
       let newProject = new project(name);
       localStorage.setItem(name, JSON.stringify(newProject));
@@ -67,7 +67,7 @@ const ProjectCTL = (() => {
   };
   const deleteNote = (projectName, noteName) => {
     const selectedProject = JSON.parse(localStorage.getItem(projectName));
-    selectedProject.notes = selectedProject.tasks.filter((note) => {
+    selectedProject.notes = selectedProject.notes.filter((note) => {
       return note.name != noteName;
     });
     localStorage.setItem(projectName, JSON.stringify(selectedProject));
@@ -76,6 +76,13 @@ const ProjectCTL = (() => {
     const selectedProject = JSON.parse(localStorage.getItem(projectName));
     selectedProject.tasks.map((task) => {
       if (task.name == taskName) task.name = newName;
+    });
+    localStorage.setItem(projectName, JSON.stringify(selectedProject));
+  };
+  const editTaskCompleted = (projectName, taskName) => {
+    const selectedProject = JSON.parse(localStorage.getItem(projectName));
+    selectedProject.tasks.map((task) => {
+      if (task.name == taskName) task.completed = !task.completed;
     });
     localStorage.setItem(projectName, JSON.stringify(selectedProject));
   };
@@ -105,6 +112,7 @@ const ProjectCTL = (() => {
     addNote,
     deleteNote,
     editTaskName,
+    editTaskCompleted,
     editNoteName,
     editNoteContent,
     removeProject,
